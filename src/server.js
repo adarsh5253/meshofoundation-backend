@@ -11,17 +11,22 @@ const profileRoutes = require("./routes/profile");
 const app = express();
 
 // --- CORS ---
-const allowedOrigins = (process.env.CLIENT_ORIGIN || "http://localhost:5173")
-  .split(",")
-  .map((o) => o.trim())
-  .filter(Boolean);
+
+// --- CORS ---
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://meshofoundation-frontend.vercel.app",
+  // https://meshofoundation-frontend.vercel.app/
+];
 
 app.use(
   cors({
     origin(origin, cb) {
       // Allow requests without an Origin header (Postman, curl, server-to-server)
       if (!origin) return cb(null, true);
+
       if (allowedOrigins.includes(origin)) return cb(null, true);
+
       return cb(new Error(`CORS: origin ${origin} is not allowed`));
     },
     credentials: true,
