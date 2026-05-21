@@ -15,7 +15,7 @@ const app = express();
 // --- CORS ---
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://meshofoundation-frontend.vercel.app",
+  "https://ngowebsite-blush.vercel.app/",
   // https://meshofoundation-frontend.vercel.app/
 ];
 
